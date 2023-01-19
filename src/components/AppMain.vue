@@ -7,7 +7,7 @@ export default {
     data() {
         return {
             baseUrl: 'http://127.0.0.1:8000/',
-            projects: null,
+            projects: {},
             loading: true
         }
     },
@@ -25,14 +25,18 @@ export default {
                     console.error(error.message);
                 })
         },
+
         imagePath(url) {
-            if (url.startsWith('uploads')) {
+            console.log(url);
+            if (url && url.startsWith('uploads')) {
+
                 return this.baseUrl + 'storage/' + url
             } else {
                 return 'https://via.placeholder.com/300x200'
             }
         },
         changePage(url) {
+            console.log(url);
             this.getPost(url)
         }
     },
