@@ -16,7 +16,8 @@ export default {
             axios
                 .get(url)
                 .then(response => {
-                    console.log(response.data.results.data)
+                    this.loading = true
+                    console.log(response.data.results)
                     this.projects = response.data.results;
                     this.loading = false
                 })
@@ -27,11 +28,12 @@ export default {
         imagePath(url) {
             if (url.startsWith('uploads')) {
                 return this.baseUrl + 'storage/' + url
-            } else if (url) {
-                return 'https://via.placeholder.com/300x200'
             } else {
                 return 'https://via.placeholder.com/300x200'
             }
+        },
+        changePage(url) {
+            this.getPost(url)
         }
     },
     mounted() {
@@ -54,4 +56,22 @@ export default {
             </div>
         </div>
     </div>
+
+    <nav aria-label="Page navigation">
+        <ul class="pagination   justify-content-center">
+            <li class="page-item" v-if="!loading && projects.prev_page_url" @click="changePage(projects.prev_page_url)">
+                <a class="page-link" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li v-if="!loading" class="page-item"><a class="page-link" href="#">
+                    {{ projects.current_page }}
+                </a></li>
+            <li class="page-item" v-if="!loading && projects.next_page_url" @click="changePage(projects.next_page_url)">
+                <a class="page-link" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 </template>
