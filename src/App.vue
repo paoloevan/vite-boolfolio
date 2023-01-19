@@ -1,9 +1,30 @@
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import axios from 'axios'
 
 export default {
     components: {
         HelloWorld,
+    },
+    data() {
+        return {
+            baseUrl: 'http://127.0.0.1:8000/'
+        }
+    },
+    methods: {
+        getPost(url) {
+            axios
+                .get(url)
+                .then(response => {
+                    console.log(response.data.results);
+                })
+                .catch(error => {
+                    console.error(error.message);
+                })
+        }
+    },
+    mounted() {
+        this.getPost(this.baseUrl + 'api/projects')
     }
 }
 </script>
