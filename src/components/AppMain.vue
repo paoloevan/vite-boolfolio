@@ -1,8 +1,12 @@
 <script>
 import { state } from '../state'
+import ProjectCard from './ProjectCard.vue'
 
 export default {
     name: 'AppMain',
+    components: {
+        ProjectCard
+    },
 
     data() {
         return {
@@ -16,22 +20,7 @@ export default {
 </script>
 
 <template>
-    <div class="container my-4">
-        <div class="row row-cols-3 g-5">
-            <div v-for="project in state.projects.data" class="col">
-                <div class="card">
-                    <img class="card-img-top" :src="state.imagePath(project.cover_image)" alt="">
-                    <div class="card-body">
-                        <h4 class="card-title">{{ project.title }}</h4>
-                        <router-link :to="{ name: 'project', params: { slug_title: project.slug_title } }">
-                            Show more...
-                        </router-link>
-                        <p class="card-text">{{ project.description }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <ProjectCard :projects="state.projects.data" :image="state.imagePath" />
 
     <nav aria-label="Page navigation">
         <ul class="pagination   justify-content-center">
