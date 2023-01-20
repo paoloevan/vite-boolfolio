@@ -16,9 +16,13 @@ export default {
             axios
                 .get(url)
                 .then(response => {
-                    // console.log(response.data.results);
-                    this.project = response.data.results
-                    this.loading = false
+                    // console.log(response.data);
+                    if (response.data.success) {
+                        this.project = response.data.results
+                        this.loading = false
+                    } else {
+                        this.$router.push({ name: 'not-found' })
+                    }
                 })
                 .catch(error => {
                     console.log(error.message)
