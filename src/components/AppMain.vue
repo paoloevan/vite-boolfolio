@@ -12,7 +12,7 @@ export default {
         }
     },
     methods: {
-        getPost(url) {
+        getProjects(url) {
             axios
                 .get(url)
                 .then(response => {
@@ -37,11 +37,11 @@ export default {
         },
         changePage(url) {
             console.log(url);
-            this.getPost(url)
+            this.getProjects(url)
         }
     },
     mounted() {
-        this.getPost(this.baseUrl + 'api/projects')
+        this.getProjects(this.baseUrl + 'api/projects')
     }
 }
 </script>
@@ -54,6 +54,9 @@ export default {
                     <img class="card-img-top" :src="imagePath(project.cover_image)" alt="">
                     <div class="card-body">
                         <h4 class="card-title">{{ project.title }}</h4>
+                        <router-link :to="{ name: 'project', params: { slug_title: project.slug_title } }">
+                            Show more...
+                        </router-link>
                         <p class="card-text">{{ project.description }}</p>
                     </div>
                 </div>
