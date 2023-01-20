@@ -1,15 +1,18 @@
 <script>
 import AppMain from './components/AppMain.vue'
+import AppNav from './components/AppNav.vue';
 
 export default {
     components: {
         AppMain,
+        AppNav
     }
 }
 </script>
 
 <template>
-    <AppMain />
+    <AppNav />
+    <router-view></router-view>
 </template>
 
 <style lang="scss">

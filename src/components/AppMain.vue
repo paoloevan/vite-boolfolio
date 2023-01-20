@@ -17,7 +17,7 @@ export default {
                 .get(url)
                 .then(response => {
                     this.loading = true
-                    console.log(response.data.results)
+                    // console.log(response.data.results)
                     this.projects = response.data.results;
                     this.loading = false
                 })
@@ -27,7 +27,7 @@ export default {
         },
 
         imagePath(url) {
-            console.log(url);
+            // console.log(url);
             if (url && url.startsWith('uploads')) {
 
                 return this.baseUrl + 'storage/' + url
