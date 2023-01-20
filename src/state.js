@@ -22,8 +22,9 @@ export const state = reactive({
     },
     imagePath(url) {
         if (url && url.startsWith('uploads')) {
+            // console.log(state.loading);
 
-            return this.baseUrl + 'storage/' + url
+            return state.baseUrl + 'storage/' + url
         } else {
             return 'https://via.placeholder.com/300x200'
         }
