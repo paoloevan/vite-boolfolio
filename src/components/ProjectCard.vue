@@ -12,6 +12,16 @@ export default {
         return {
             state
         }
+    },
+    methods: {
+        /**
+         * 
+         * @param {string} string the string to be truncate
+         */
+        trimBody(string) {
+            const body = string.substring(0, 100) + '...'
+            return body
+        }
     }
 }
 </script>
@@ -24,10 +34,10 @@ export default {
                     <img class="card-img-top" :src="image(project.cover_image)" alt="">
                     <div class="card-body">
                         <h4 class="card-title">{{ project.title }}</h4>
+                        <p v-if="project.description" class="card-text">{{ trimBody(project.description) }}</p>
                         <router-link :to="{ name: 'project', params: { slug_title: project.slug_title } }">
                             Show more...
                         </router-link>
-                        <p class="card-text">{{ project.description }}</p>
                     </div>
                     <div class="card-footer">
                         <ul>

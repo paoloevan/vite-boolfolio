@@ -37,7 +37,7 @@ export default {
 </script>
 
 <template>
-    <h1>{{ $route.params.slug_title }}</h1>
+    <h1 class="text-center">{{ $route.params.slug_title }}</h1>
 
     <div v-if="!loading" class="single-project container">
         <div class="card">
@@ -45,6 +45,25 @@ export default {
             <div class="card-body">
                 <h4 class="card-title">{{ project.title }}</h4>
                 <p class="card-text">{{ project.description }}</p>
+            </div>
+            <div class="card-footer">
+                <ul>
+                    <li v-if="project.type">
+                        Type: {{ project.type.name }}
+                    </li>
+                    <li v-else>Not type associated</li>
+
+                    <li v-if="project.technologies.length > 0">
+                    <li>Technologies:
+                        <span v-for="technology in project.technologies">
+                            {{ technology.name + ' ' }}
+                        </span>
+                    </li>
+                    </li>
+                    <li v-else>
+                        Not technologies associated
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
