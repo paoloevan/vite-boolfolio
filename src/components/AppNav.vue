@@ -1,4 +1,5 @@
 <script>
+
 export default {
     name: 'AppNav'
 }
@@ -16,8 +17,8 @@ export default {
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <ul class="navbar-nav me-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <router-link class="nav-link" :to="{ name: 'home' }" aria-current="page">My projects<span
-                                class="visually-hidden">(current)</span></router-link>
+                        <router-link class="nav-link" :to="{ name: 'home' }" aria-current="page">My
+                            projects<span class="visually-hidden">(current)</span></router-link>
                     </li>
                     <li class="nav-item">
                         <router-link class="nav-link" :to="{ name: 'about' }">About</router-link>
@@ -41,10 +42,14 @@ export default {
         font-size: 2rem;
     }
 
-    .nav-link:hover,
-    .nav-link:focus {
-        color: black;
-        text-decoration: underline;
+    .nav-link {
+
+        &:hover,
+        &:focus {
+            color: rgb(12, 237, 0);
+            text-decoration: underline;
+
+        }
     }
 }
 </style>

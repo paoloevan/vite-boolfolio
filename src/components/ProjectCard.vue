@@ -28,14 +28,15 @@ export default {
 
 <template>
     <div>
-        <div class="row row-cols-3 g-5">
+        <div class="row row-cols-3 g-4">
             <div v-for="project in projects" class="col">
                 <div class="card">
                     <img class="card-img-top" :src="image(project.cover_image)" alt="">
-                    <div class="card-body">
+                    <div class="card-body d-flex flex-column justify-content-between">
                         <h4 class="card-title">{{ project.title }}</h4>
                         <p v-if="project.description" class="card-text">{{ trimBody(project.description) }}</p>
-                        <router-link :to="{ name: 'project', params: { slug_title: project.slug_title } }">
+                        <router-link class="show_more"
+                            :to="{ name: 'project', params: { slug_title: project.slug_title } }">
                             Show more...
                         </router-link>
                     </div>
@@ -63,3 +64,24 @@ export default {
         </div>
     </div>
 </template>
+
+<style lang="scss" scoped>
+.card {
+    border-color: black;
+    // box-shadow: 0px ;
+    border-radius: 0;
+
+    .card-img-top {
+        border-radius: 0;
+    }
+
+    .card-body {
+        height: 13rem;
+
+        .show_more {
+            color: rgb(12, 237, 0);
+
+        }
+    }
+}
+</style>
