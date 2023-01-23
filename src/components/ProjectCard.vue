@@ -27,7 +27,7 @@ export default {
 </script>
 
 <template>
-    <div class="container my-4">
+    <div>
         <div class="row row-cols-3 g-5">
             <div v-for="project in projects" class="col">
                 <div class="card">
