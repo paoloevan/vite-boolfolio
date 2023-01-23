@@ -22,6 +22,7 @@ export default {
 <template>
     <ProjectCard :projects="state.projects.data" :image="state.imagePath" />
 
+    <!-- Pagination -->
     <nav aria-label="Page navigation">
         <ul class="pagination   justify-content-center">
             <li class="page-item" v-if="!state.loading && state.projects.prev_page_url"

@@ -20,6 +20,10 @@ export const state = reactive({
                 console.error(error.message);
             })
     },
+    /**
+     * 
+     * @param {string} url url of image calls by API (getProjects method)
+     */
     imagePath(url) {
         if (url && url.startsWith('uploads')) {
             // console.log(state.loading);
@@ -29,6 +33,7 @@ export const state = reactive({
             return 'https://via.placeholder.com/300x200'
         }
     },
+    // pagination
     changePage(url) {
         this.getProjects(url)
     }
