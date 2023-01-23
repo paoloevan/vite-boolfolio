@@ -29,6 +29,25 @@ export default {
                         </router-link>
                         <p class="card-text">{{ project.description }}</p>
                     </div>
+                    <div class="card-footer">
+                        <ul>
+                            <li v-if="project.type">
+                                Type: {{ project.type.name }}
+                            </li>
+                            <li v-else>Not type associated</li>
+
+                            <li v-if="project.technologies.length > 0">
+                            <li>Technologies:
+                                <span v-for="technology in project.technologies">
+                                    {{ technology.name + ' ' }}
+                                </span>
+                            </li>
+                            </li>
+                            <li v-else>
+                                Not technologies associated
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
