@@ -25,10 +25,10 @@ export const state = reactive({
      * @param {string} url url of image calls by API (getProjects method)
      */
     imagePath(url) {
-        if (url && url.startsWith('uploads')) {
-            // console.log(state.loading);
-
+        if (url && !url.startsWith('https')) {
             return state.baseUrl + 'storage/' + url
+        } else if (url && url.startsWith('https')) {
+            return url
         } else {
             return 'https://via.placeholder.com/300x200'
         }
