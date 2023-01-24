@@ -45,6 +45,12 @@ export default {
             <div class="card-body">
                 <h4 class="card-title">{{ project.title }}</h4>
                 <p class="card-text">{{ project.description }}</p>
+                <div><strong class="strong">Visit this site: </strong><span class="project_link">{{
+                    project.project_url
+                }}</span></div>
+                <div><strong class="strong">See the source code: </strong><span class="project_link">{{
+                    project.source_code
+                }}</span></div>
             </div>
             <div class="card-footer">
                 <ul>
@@ -70,3 +76,12 @@ export default {
 
 
 </template>
+
+<style lang="scss" scoped>
+.project_link {
+    color: rgb(12, 237, 0);
+    text-decoration: underline;
+    cursor: pointer;
+
+}
+</style>
