@@ -6,6 +6,12 @@ export const state = reactive({
     baseUrl: 'http://127.0.0.1:8000/',
     projects: {},
     loading: true,
+    name: '',
+    email: '',
+    message: '',
+    success: false,
+    loading: false,
+    errors: {},
 
     getProjects(url) {
         axios
@@ -36,5 +42,35 @@ export const state = reactive({
     // pagination
     changePage(url) {
         this.getProjects(url)
+    },
+    //send email
+    sendForm() {
+        state.loading = true
+
+        const data = {
+            name: state.name,
+            email: state.email,
+            message: state.message
+        }
+
+        axios
+            .post(state.baseUrl + 'api/contacts/', data)
+            .then((response => {
+
+                state.success = response.data.success
+
+                console.log(response);
+
+                if (state.success) {
+                    state.name = '',
+                        state.email = '',
+                        state.message = '',
+                        state.errors = {}
+                } else {
+                    state.errors = response.data.errors
+                }
+
+                state.loading = false
+            }))
     }
 })
